@@ -21,16 +21,16 @@ const Index = () => {
   ];
 
   const allMatches = [
-    { date: '15 января 2026', time: '19:30', opponent: 'Зенит', location: 'Стадион Открытие Арена', championship: 'РПЛ', home: true, score: null },
+    { date: '15 января 2026', time: '19:30', opponent: 'Зенит', location: 'Лукойл Арена', championship: 'РПЛ', home: true, score: null },
     { date: '22 января 2026', time: '16:00', opponent: 'ЦСКА', location: 'ВЭБ Арена', championship: 'РПЛ', home: false, score: null },
-    { date: '29 января 2026', time: '19:30', opponent: 'Локомотив', location: 'Стадион Открытие Арена', championship: 'РПЛ', home: true, score: null },
+    { date: '29 января 2026', time: '19:30', opponent: 'Локомотив', location: 'Лукойл Арена', championship: 'РПЛ', home: true, score: null },
     { date: '5 февраля 2026', time: '16:00', opponent: 'Краснодар', location: 'Стадион Краснодар', championship: 'РПЛ', home: false, score: null },
-    { date: '12 февраля 2026', time: '19:30', opponent: 'Динамо', location: 'Стадион Открытие Арена', championship: 'РПЛ', home: true, score: null },
+    { date: '12 февраля 2026', time: '19:30', opponent: 'Динамо', location: 'Лукойл Арена', championship: 'РПЛ', home: true, score: null },
     { date: '19 февраля 2026', time: '14:00', opponent: 'Сочи', location: 'Фишт', championship: 'РПЛ', home: false, score: null },
-    { date: '26 февраля 2026', time: '19:30', opponent: 'Ростов', location: 'Стадион Открытие Арена', championship: 'РПЛ', home: true, score: null },
+    { date: '26 февраля 2026', time: '19:30', opponent: 'Ростов', location: 'Лукойл Арена', championship: 'РПЛ', home: true, score: null },
     { date: '5 марта 2026', time: '16:00', opponent: 'Рубин', location: 'Ак Барс Арена', championship: 'РПЛ', home: false, score: null },
     { date: '28 декабря 2025', time: '16:00', opponent: 'Урал', location: 'Екатеринбург Арена', championship: 'РПЛ', home: false, score: '2:1' },
-    { date: '21 декабря 2025', time: '19:30', opponent: 'Ахмат', location: 'Стадион Открытие Арена', championship: 'РПЛ', home: true, score: '3:0' },
+    { date: '21 декабря 2025', time: '19:30', opponent: 'Ахмат', location: 'Лукойл Арена', championship: 'РПЛ', home: true, score: '3:0' },
     { date: '14 декабря 2025', time: '14:00', opponent: 'Оренбург', location: 'Газовик', championship: 'РПЛ', home: false, score: '1:1' },
   ];
 
@@ -513,9 +513,11 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl">
-                С
-              </div>
+              <img 
+                src="https://cdn.poehali.dev/projects/3185891c-e5a8-4947-9f2f-820c915a14e7/files/c80bc576-45ec-4bea-8e8d-df0b1fd8a801.jpg" 
+                alt="Спартак Москва" 
+                className="w-12 h-12 object-contain"
+              />
               <div>
                 <h1 className="text-2xl font-bold">СПАРТАК</h1>
                 <p className="text-xs text-muted-foreground">Москва</p>
@@ -580,7 +582,7 @@ const Index = () => {
               <ul className="space-y-2 text-gray-400">
                 <li className="flex items-center gap-2">
                   <Icon name="MapPin" size={16} />
-                  Москва, Открытие Арена
+                  Москва, Лукойл Арена
                 </li>
                 <li className="flex items-center gap-2">
                   <Icon name="Phone" size={16} />
