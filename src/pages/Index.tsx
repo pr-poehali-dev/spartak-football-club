@@ -20,32 +20,21 @@ const Index = () => {
     { id: 'contacts', label: 'Контакты', icon: 'Mail' },
   ];
 
-  const upcomingMatches = [
-    {
-      date: '15 января 2026',
-      time: '19:30',
-      opponent: 'Зенит',
-      location: 'Стадион Открытие Арена',
-      championship: 'РПЛ',
-      home: true,
-    },
-    {
-      date: '22 января 2026',
-      time: '16:00',
-      opponent: 'ЦСКА',
-      location: 'ВЭБ Арена',
-      championship: 'РПЛ',
-      home: false,
-    },
-    {
-      date: '29 января 2026',
-      time: '19:30',
-      opponent: 'Локомотив',
-      location: 'Стадион Открытие Арена',
-      championship: 'РПЛ',
-      home: true,
-    },
+  const allMatches = [
+    { date: '15 января 2026', time: '19:30', opponent: 'Зенит', location: 'Стадион Открытие Арена', championship: 'РПЛ', home: true, score: null },
+    { date: '22 января 2026', time: '16:00', opponent: 'ЦСКА', location: 'ВЭБ Арена', championship: 'РПЛ', home: false, score: null },
+    { date: '29 января 2026', time: '19:30', opponent: 'Локомотив', location: 'Стадион Открытие Арена', championship: 'РПЛ', home: true, score: null },
+    { date: '5 февраля 2026', time: '16:00', opponent: 'Краснодар', location: 'Стадион Краснодар', championship: 'РПЛ', home: false, score: null },
+    { date: '12 февраля 2026', time: '19:30', opponent: 'Динамо', location: 'Стадион Открытие Арена', championship: 'РПЛ', home: true, score: null },
+    { date: '19 февраля 2026', time: '14:00', opponent: 'Сочи', location: 'Фишт', championship: 'РПЛ', home: false, score: null },
+    { date: '26 февраля 2026', time: '19:30', opponent: 'Ростов', location: 'Стадион Открытие Арена', championship: 'РПЛ', home: true, score: null },
+    { date: '5 марта 2026', time: '16:00', opponent: 'Рубин', location: 'Ак Барс Арена', championship: 'РПЛ', home: false, score: null },
+    { date: '28 декабря 2025', time: '16:00', opponent: 'Урал', location: 'Екатеринбург Арена', championship: 'РПЛ', home: false, score: '2:1' },
+    { date: '21 декабря 2025', time: '19:30', opponent: 'Ахмат', location: 'Стадион Открытие Арена', championship: 'РПЛ', home: true, score: '3:0' },
+    { date: '14 декабря 2025', time: '14:00', opponent: 'Оренбург', location: 'Газовик', championship: 'РПЛ', home: false, score: '1:1' },
   ];
+
+  const upcomingMatches = allMatches.filter(m => !m.score).slice(0, 3);
 
   const latestNews = [
     {
@@ -68,40 +57,43 @@ const Index = () => {
     },
   ];
 
+  const players = [
+    { number: 1, name: 'Александр Максименко', position: 'Вратарь', age: 26, nationality: '🇷🇺' },
+    { number: 98, name: 'Александр Селихов', position: 'Вратарь', age: 30, nationality: '🇷🇺' },
+    { number: 2, name: 'Срджан Бабич', position: 'Защитник', age: 28, nationality: '🇷🇸' },
+    { number: 3, name: 'Александр Коковин', position: 'Защитник', age: 26, nationality: '🇷🇺' },
+    { number: 4, name: 'Николай Рассказов', position: 'Защитник', age: 29, nationality: '🇷🇺' },
+    { number: 14, name: 'Роман Евгеньев', position: 'Защитник', age: 31, nationality: '🇷🇺' },
+    { number: 22, name: 'Дмитрий Чистяков', position: 'Защитник', age: 24, nationality: '🇷🇺' },
+    { number: 5, name: 'Кристофер Мартинс', position: 'Полузащитник', age: 27, nationality: '🇱🇺' },
+    { number: 6, name: 'Роман Зобнин', position: 'Полузащитник', age: 30, nationality: '🇷🇺' },
+    { number: 7, name: 'Даниил Денисов', position: 'Полузащитник', age: 22, nationality: '🇷🇺' },
+    { number: 8, name: 'Теофилюс Фоман', position: 'Полузащитник', age: 23, nationality: '🇬🇭' },
+    { number: 10, name: 'Квинси Промес', position: 'Полузащитник', age: 32, nationality: '🇳🇱' },
+    { number: 19, name: 'Александр Соболев', position: 'Нападающий', age: 27, nationality: '🇷🇺' },
+    { number: 9, name: 'Манфред Угальде', position: 'Нападающий', age: 22, nationality: '🇨🇷' },
+    { number: 11, name: 'Шарль Кабор', position: 'Нападающий', age: 28, nationality: '🇧🇫' },
+  ];
+
+  const shopItems = [
+    { id: 1, name: 'Домашняя футболка 2025/26', price: 5990, category: 'Одежда', image: '👕' },
+    { id: 2, name: 'Гостевая футболка 2025/26', price: 5990, category: 'Одежда', image: '👕' },
+    { id: 3, name: 'Кружка с логотипом', price: 890, category: 'Сувениры', image: '☕' },
+    { id: 4, name: 'Шарф болельщика', price: 1490, category: 'Аксессуары', image: '🧣' },
+    { id: 5, name: 'Календарь 2026', price: 490, category: 'Сувениры', image: '📅' },
+    { id: 6, name: 'Кепка красно-белая', price: 1290, category: 'Аксессуары', image: '🧢' },
+    { id: 7, name: 'Флаг 90x135 см', price: 990, category: 'Атрибутика', image: '🚩' },
+    { id: 8, name: 'Магнит с эмблемой', price: 290, category: 'Сувениры', image: '🧲' },
+    { id: 9, name: 'Спортивная куртка', price: 7990, category: 'Одежда', image: '🧥' },
+    { id: 10, name: 'Брелок в виде мяча', price: 390, category: 'Сувениры', image: '⚽' },
+    { id: 11, name: 'Постер А2 с командой', price: 690, category: 'Сувениры', image: '🖼️' },
+    { id: 12, name: 'Рюкзак красно-белый', price: 3490, category: 'Аксессуары', image: '🎒' },
+  ];
+
   const transfers = [
-    {
-      player: 'Иван Петров',
-      position: 'Нападающий',
-      type: 'Переход',
-      from: 'Краснодар',
-      to: 'Спартак',
-      fee: '€12М',
-      contract: '2026-2030',
-      status: 'completed',
-      date: '5 января 2026',
-    },
-    {
-      player: 'Александр Сидоров',
-      position: 'Полузащитник',
-      type: 'Аренда',
-      from: 'Спартак',
-      to: 'Сочи',
-      fee: 'Аренда',
-      contract: 'до 30.06.2026',
-      status: 'completed',
-      date: '3 января 2026',
-    },
-    {
-      player: 'Михаил Кузнецов',
-      position: 'Защитник',
-      type: 'Слух',
-      from: 'Рубин',
-      to: 'Спартак',
-      fee: '€8М',
-      contract: '2026-2029',
-      status: 'rumor',
-      date: '8 января 2026',
-    },
+    { player: 'Иван Петров', position: 'Нападающий', type: 'Переход', from: 'Краснодар', to: 'Спартак', fee: '€12М', contract: '2026-2030', status: 'completed', date: '5 января 2026' },
+    { player: 'Александр Сидоров', position: 'Полузащитник', type: 'Аренда', from: 'Спартак', to: 'Сочи', fee: 'Аренда', contract: 'до 30.06.2026', status: 'completed', date: '3 января 2026' },
+    { player: 'Михаил Кузнецов', position: 'Защитник', type: 'Слух', from: 'Рубин', to: 'Спартак', fee: '€8М', contract: '2026-2029', status: 'rumor', date: '8 января 2026' },
   ];
 
   const renderHome = () => (
@@ -262,10 +254,244 @@ const Index = () => {
     </div>
   );
 
+  const renderMatches = () => (
+    <div className="container mx-auto px-4 py-12">
+      <h1 className="text-5xl font-bold mb-8">Календарь матчей</h1>
+      
+      <div className="mb-12">
+        <h2 className="text-3xl font-bold mb-6">Предстоящие матчи</h2>
+        <div className="space-y-4">
+          {allMatches.filter(m => !m.score).map((match, index) => (
+            <Card key={index} className="hover:shadow-lg transition-shadow">
+              <CardContent className="p-6">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div className="flex-1">
+                    <Badge className="mb-2 bg-primary">{match.championship}</Badge>
+                    <h3 className="text-2xl font-bold mb-2">
+                      {match.home ? 'Спартак' : match.opponent} vs {match.home ? match.opponent : 'Спартак'}
+                    </h3>
+                    <div className="flex items-center gap-4 text-muted-foreground">
+                      <div className="flex items-center gap-2">
+                        <Icon name="Calendar" size={16} />
+                        <span>{match.date}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Icon name="Clock" size={16} />
+                        <span>{match.time}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Icon name="MapPin" size={16} />
+                        <span>{match.location}</span>
+                      </div>
+                    </div>
+                  </div>
+                  {match.home && (
+                    <Button>Купить билеты</Button>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h2 className="text-3xl font-bold mb-6">Прошедшие матчи</h2>
+        <div className="space-y-4">
+          {allMatches.filter(m => m.score).map((match, index) => (
+            <Card key={index}>
+              <CardContent className="p-6">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div className="flex-1">
+                    <Badge variant="secondary" className="mb-2">{match.championship}</Badge>
+                    <h3 className="text-2xl font-bold mb-2">
+                      {match.home ? 'Спартак' : match.opponent} vs {match.home ? match.opponent : 'Спартак'}
+                    </h3>
+                    <div className="flex items-center gap-4 text-muted-foreground text-sm">
+                      <span>{match.date}</span>
+                      <span>•</span>
+                      <span>{match.location}</span>
+                    </div>
+                  </div>
+                  <div className="text-3xl font-bold text-primary">
+                    {match.score}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderTeam = () => (
+    <div className="container mx-auto px-4 py-12">
+      <h1 className="text-5xl font-bold mb-8">Состав команды</h1>
+      
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {players.map((player) => (
+          <Card key={player.number} className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <div className="flex items-start justify-between">
+                <div>
+                  <CardTitle className="text-xl">{player.name}</CardTitle>
+                  <CardDescription className="text-base mt-1">
+                    {player.position}
+                  </CardDescription>
+                </div>
+                <div className="text-4xl font-bold text-primary">
+                  {player.number}
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="flex gap-4 text-sm text-muted-foreground">
+                <div>
+                  <span className="font-semibold">Возраст:</span> {player.age}
+                </div>
+                <div>
+                  <span className="font-semibold">Страна:</span> {player.nationality}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderHistory = () => (
+    <div className="container mx-auto px-4 py-12">
+      <h1 className="text-5xl font-bold mb-8">История клуба</h1>
+      
+      <div className="space-y-8 max-w-4xl">
+        <Card>
+          <CardContent className="p-8">
+            <h2 className="text-3xl font-bold mb-6">Основание</h2>
+            <p className="text-lg leading-relaxed mb-4">
+              Футбольный клуб «Спартак» из Москвы основан 18 апреля 1922 года под названием «Московский клуб спорта» (МКС). 
+              История клуба берёт своё начало от Русского гимнастического общества (РГО «Сокол»), которое было основано 4 (16) мая 1883 года.
+            </p>
+            <p className="text-lg leading-relaxed mb-4">
+              Инициаторами создания команды были братья Старостины (Андрей, Пётр, Александр) во главе со старшим — Николаем. 
+              Ранее четыре брата, игравшие в футбол, состояли в «Соколе», которое было признано советскими властями «буржуазным пережитком» 
+              и подверглось реформированию. По сути, именно из «Сокола» возникла команда, которая в дальнейшем стала «Спартаком».
+            </p>
+            <p className="text-lg leading-relaxed">
+              С 1922 по 1934 год клуб носил следующие названия: 1922–1923 годы — МКС; 1923–1925 годы — «Красная Пресня»; 
+              1926–1931 годы — «Пищевики»; 1931 год, 1934 год — «Промкооперация»; 1932–1933 годы — «Дукат»; 1934 — «Спартак».
+            </p>
+            <p className="text-lg leading-relaxed mt-4">
+              Название «Спартак» придумал Николай Старостин, по официальной версии — вдохновившись названием одноимённой книги 
+              итальянского писателя Рафаэля Джованьоли о судьбе римского гладиатора.
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-8">
+            <h2 className="text-3xl font-bold mb-6">Советский период</h2>
+            <p className="text-lg leading-relaxed mb-4">
+              Первый матч «Спартак» провёл 12 апреля 1935 года, разгромив «Трёхгорку» со счётом 7:1.
+            </p>
+            <p className="text-lg leading-relaxed mb-4">
+              В 1936 году был образован чемпионат СССР по футболу, и «Спартак» начал выступать в нём. 
+              В весеннем чемпионате команда заняла третье место, в осеннем — стала чемпионом.
+            </p>
+            <p className="text-lg leading-relaxed mb-4">
+              В первые послевоенные годы «Спартак» дважды выигрывал Кубок Советского Союза.
+            </p>
+            <p className="text-lg leading-relaxed">
+              В 1966 году «Спартак» впервые выступил в еврокубках.
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-8">
+            <h2 className="text-3xl font-bold mb-6">Российский период</h2>
+            <p className="text-lg leading-relaxed mb-4">
+              После распада Советского Союза чемпионат СССР прекратил своё существование. 
+              В недавно созданной российской лиге «Спартак» доминировал и выиграл все титулы, кроме одного, в период с 1992 по 2001 год.
+            </p>
+            <p className="text-lg leading-relaxed">
+              В 2017 году «Спартак» завоевал свой десятый титул чемпиона России.
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-primary text-white">
+          <CardContent className="p-8">
+            <h2 className="text-3xl font-bold mb-6">Достижения</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <div className="text-4xl font-bold mb-2">12x</div>
+                <p className="text-lg">Чемпион СССР</p>
+              </div>
+              <div>
+                <div className="text-4xl font-bold mb-2">10x</div>
+                <p className="text-lg">Чемпион России</p>
+              </div>
+              <div>
+                <div className="text-4xl font-bold mb-2">10x</div>
+                <p className="text-lg">Обладатель Кубка СССР</p>
+              </div>
+              <div>
+                <div className="text-4xl font-bold mb-2">4x</div>
+                <p className="text-lg">Обладатель Кубка России</p>
+              </div>
+            </div>
+            <Separator className="my-6 bg-white/20" />
+            <p className="text-lg">
+              Обладатель Суперкубка России. Полуфиналист трёх главных клубных европейских турниров 
+              (Кубка европейских чемпионов, Кубка обладателей кубков и Кубка УЕФА).
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+
+  const renderShop = () => (
+    <div className="container mx-auto px-4 py-12">
+      <h1 className="text-5xl font-bold mb-4">Магазин Спартака</h1>
+      <p className="text-xl text-muted-foreground mb-8">Официальная продукция клуба</p>
+      
+      <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {shopItems.map((item) => (
+          <Card key={item.id} className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <div className="text-6xl mb-4 text-center">{item.image}</div>
+              <Badge variant="secondary" className="w-fit mb-2">{item.category}</Badge>
+              <CardTitle className="text-lg">{item.name}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center justify-between">
+                <span className="text-2xl font-bold text-primary">{item.price} ₽</span>
+                <Button size="sm">
+                  <Icon name="ShoppingCart" size={16} />
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+
   const renderSection = () => {
     switch (activeSection) {
       case 'home':
         return renderHome();
+      case 'matches':
+        return renderMatches();
+      case 'team':
+        return renderTeam();
+      case 'history':
+        return renderHistory();
+      case 'shop':
+        return renderShop();
       case 'transfers':
         return renderTransfers();
       default:
