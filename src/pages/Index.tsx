@@ -16,6 +16,7 @@ const Index = () => {
     { id: 'news', label: 'Новости', icon: 'Newspaper' },
     { id: 'transfers', label: 'Трансферы', icon: 'ArrowLeftRight' },
     { id: 'tickets', label: 'Билеты', icon: 'Ticket' },
+    { id: 'fancard', label: 'Карта болельщика', icon: 'CreditCard' },
     { id: 'shop', label: 'Магазин', icon: 'ShoppingBag' },
     { id: 'contacts', label: 'Контакты', icon: 'Mail' },
   ];
@@ -480,6 +481,264 @@ const Index = () => {
     </div>
   );
 
+  const renderTickets = () => (
+    <div className="container mx-auto px-4 py-12">
+      <h1 className="text-5xl font-bold mb-4">Билеты</h1>
+      <p className="text-xl text-muted-foreground mb-8">Билеты на домашние матчи Спартака</p>
+
+      <Card className="mb-8 bg-secondary/30">
+        <CardContent className="p-8 text-center">
+          <Icon name="Info" size={48} className="mx-auto mb-4 text-primary" />
+          <h2 className="text-2xl font-bold mb-4">Билетов в продаже пока нет</h2>
+          <p className="text-lg text-muted-foreground mb-6">
+            Информация о продаже билетов на ближайшие матчи появится в ближайшее время
+          </p>
+          <Button size="lg" variant="outline">
+            Уведомить о начале продажи
+          </Button>
+        </CardContent>
+      </Card>
+
+      <h2 className="text-3xl font-bold mb-6">Предстоящие домашние матчи</h2>
+      <div className="space-y-4">
+        {allMatches.filter(m => m.home && !m.score).map((match, index) => (
+          <Card key={index}>
+            <CardContent className="p-6">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="flex-1">
+                  <Badge className="mb-2 bg-primary">{match.championship}</Badge>
+                  <h3 className="text-2xl font-bold mb-2">
+                    Спартак vs {match.opponent}
+                  </h3>
+                  <div className="flex items-center gap-4 text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <Icon name="Calendar" size={16} />
+                      <span>{match.date}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Icon name="Clock" size={16} />
+                      <span>{match.time}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Icon name="MapPin" size={16} />
+                      <span>{match.location}</span>
+                    </div>
+                  </div>
+                </div>
+                <Button disabled>Скоро в продаже</Button>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      <Card className="mt-8">
+        <CardContent className="p-6">
+          <h3 className="text-xl font-bold mb-4">Важная информация</h3>
+          <ul className="space-y-2 text-muted-foreground">
+            <li className="flex gap-2">
+              <Icon name="Check" className="text-primary mt-1 flex-shrink-0" size={18} />
+              <span>Для покупки билета необходима Карта болельщика</span>
+            </li>
+            <li className="flex gap-2">
+              <Icon name="Check" className="text-primary mt-1 flex-shrink-0" size={18} />
+              <span>Билеты продаются только на сайте клуба и официальных партнерах</span>
+            </li>
+            <li className="flex gap-2">
+              <Icon name="Check" className="text-primary mt-1 flex-shrink-0" size={18} />
+              <span>Дети до 7 лет включительно проходят бесплатно без места</span>
+            </li>
+          </ul>
+        </CardContent>
+      </Card>
+    </div>
+  );
+
+  const renderFanCard = () => (
+    <div className="container mx-auto px-4 py-12">
+      <h1 className="text-5xl font-bold mb-4">Карта болельщика</h1>
+      <p className="text-xl text-muted-foreground mb-8">
+        Всё, что нужно знать о получении и использовании Карты болельщика
+      </p>
+
+      <div className="space-y-8 max-w-4xl">
+        <Card>
+          <CardContent className="p-8">
+            <h2 className="text-3xl font-bold mb-6">Что такое Карта болельщика</h2>
+            <p className="text-lg leading-relaxed mb-4">
+              Карта болельщика (FAN ID) — электронный документ, который хранится в разделе «Документы» 
+              в вашем личном кабинете на портале и в мобильном приложении «Госуслуги», 
+              а также в мобильном приложении «Госуслуги Карта болельщика».
+            </p>
+            <p className="text-lg leading-relaxed">
+              Карта болельщика нужна для покупки абонементов и билетов на матчи Российской премьер-лиги 
+              и финальный матч Кубка России, а также для оформления аккредитации.
+            </p>
+            <div className="mt-6 p-4 bg-accent/20 rounded-lg">
+              <p className="font-semibold">Для удобства и быстроты использования Карты болельщика рекомендуем 
+              установить приложение «Госуслуги Карта болельщика».</p>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-8">
+            <h2 className="text-3xl font-bold mb-6">Как оформить Карту болельщика</h2>
+            
+            <div className="mb-6 p-4 bg-primary/10 rounded-lg border-l-4 border-primary">
+              <p className="font-bold text-lg">ВАЖНО!</p>
+              <p className="mt-2">Карта болельщика оформляется отдельно на каждого человека, 
+              в том числе на детей в возрасте от 0 до 14 лет.</p>
+            </div>
+
+            <p className="text-lg leading-relaxed mb-6">
+              Для оформления Карты болельщика нужно зарегистрироваться на «Госуслугах». 
+              Учётная запись может быть любой, даже упрощённой.
+            </p>
+
+            <h3 className="text-2xl font-bold mb-4">Способы оформления:</h3>
+            <div className="space-y-4 mb-6">
+              <div className="flex gap-3">
+                <Icon name="Building2" className="text-primary mt-1 flex-shrink-0" size={24} />
+                <div>
+                  <p className="font-semibold">Лично в МФЦ</p>
+                  <p className="text-muted-foreground">В удобном для вас отделении</p>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <Icon name="Smartphone" className="text-primary mt-1 flex-shrink-0" size={24} />
+                <div>
+                  <p className="font-semibold">Онлайн с загранпаспортом</p>
+                  <p className="text-muted-foreground">Нового образца в приложении (если вы старше 14 лет)</p>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <Icon name="Fingerprint" className="text-primary mt-1 flex-shrink-0" size={24} />
+                <div>
+                  <p className="font-semibold">С помощью биометрии ЕБС</p>
+                  <p className="text-muted-foreground">В приложении или на портале (если вы старше 18 лет)</p>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <Icon name="Globe" className="text-primary mt-1 flex-shrink-0" size={24} />
+                <div>
+                  <p className="font-semibold">В приложении «Госуслуги»</p>
+                  <p className="text-muted-foreground">Удобный способ для всех</p>
+                </div>
+              </div>
+            </div>
+
+            <h3 className="text-2xl font-bold mb-4">Этапы оформления:</h3>
+            <div className="space-y-3">
+              <div className="flex gap-3">
+                <Badge className="flex-shrink-0">1</Badge>
+                <p>Подача заявления (в МФЦ или онлайн)</p>
+              </div>
+              <div className="flex gap-3">
+                <Badge className="flex-shrink-0">2</Badge>
+                <p>Подтверждение личности (в МФЦ или онлайн)</p>
+              </div>
+              <div className="flex gap-3">
+                <Badge className="flex-shrink-0">3</Badge>
+                <p>Получение уведомления о готовности (на email и в личный кабинет)</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-8">
+            <h2 className="text-3xl font-bold mb-6">Карта болельщика для детей</h2>
+            
+            <h3 className="text-2xl font-bold mb-4">Для детей от 0 до 14 лет</h3>
+            <p className="text-lg leading-relaxed mb-4">
+              Карту болельщика на ребенка оформляет один из родителей или законный представитель 
+              на «Госуслугах» или в приложении «Госуслуги Карта болельщика».
+            </p>
+            <div className="mb-6 p-4 bg-accent/20 rounded-lg">
+              <p className="font-semibold mb-2">ВАЖНО!</p>
+              <p>Взрослый с подтвержденной учетной записью может оформить Карту болельщика на ребенка 
+              онлайн (без посещения МФЦ) при условии, что данные ребенка добавлены в раздел «Семья и дети».</p>
+            </div>
+
+            <h3 className="text-2xl font-bold mb-4">Для детей с 14 лет</h3>
+            <p className="text-lg leading-relaxed">
+              После наступления 14 лет и получения паспорта ребенок может самостоятельно зарегистрироваться 
+              на портале «Госуслуги» и оформить Карту болельщика. Карту, полученную ранее, необходимо 
+              аннулировать в личном кабинете взрослого.
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-8">
+            <h2 className="text-3xl font-bold mb-6">Как пройти на «ЛУКОЙЛ Арену»</h2>
+            
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-xl font-bold mb-3">1. Покупка билета</h3>
+                <p className="text-lg leading-relaxed">
+                  При покупке абонементов и билетов вам нужно указать номер своей Карты болельщика 
+                  или номер телефона, к которому привязана карта. Оплаченный билет придет на email 
+                  в виде pdf-файла.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-bold mb-3">2. Передача билета</h3>
+                <p className="text-lg leading-relaxed">
+                  Если вы приобрели более одного билета, на остальные нужно вручную назначить владельцев 
+                  на «Госуслугах» или в приложении. Передать билет можно только человеку с оформленной 
+                  Картой болельщика!
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-bold mb-3">3. В день матча</h3>
+                <p className="text-lg leading-relaxed mb-4">
+                  На первой входной группе стадиона предъявите QR-код из личного кабинета на «Госуслугах» 
+                  или в приложении. Пройти по чужому QR-коду невозможно.
+                </p>
+                <p className="text-lg leading-relaxed">
+                  Для прохода в чашу арены и занятия места предъявите стюардам посадочный талон (pdf-файл) 
+                  в электронном или бумажном виде.
+                </p>
+              </div>
+
+              <div className="p-4 bg-green-50 border-l-4 border-green-500 rounded-lg">
+                <p className="font-bold text-green-800 mb-2">Для детей до 7 лет</p>
+                <p className="text-green-700">
+                  Ребенок до 7 лет включительно имеет право пройти на «ЛУКОЙЛ Арену» бесплатно, 
+                  без занятия места в сопровождении взрослого. Сформируйте бесплатный детский билет 
+                  в разделе «Карта болельщика-Билеты» на «Госуслугах».
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-secondary/30">
+          <CardContent className="p-8">
+            <div className="flex items-start gap-4">
+              <Icon name="AlertCircle" className="text-primary mt-1 flex-shrink-0" size={32} />
+              <div>
+                <h3 className="text-xl font-bold mb-3">Важная информация</h3>
+                <p className="text-lg leading-relaxed mb-4">
+                  Одобрение Карты болельщика может занять до 72 часов. Просим вас заранее оформлять 
+                  Карту болельщика!
+                </p>
+                <p className="text-lg leading-relaxed">
+                  На «ЛУКОЙЛ Арене» нет временного МФЦ. Ближайшее отделение находится по адресу: 
+                  м. Тушинская, д. 17, ТЦ «Праздник».
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+
   const renderSection = () => {
     switch (activeSection) {
       case 'home':
@@ -490,6 +749,10 @@ const Index = () => {
         return renderTeam();
       case 'history':
         return renderHistory();
+      case 'tickets':
+        return renderTickets();
+      case 'fancard':
+        return renderFanCard();
       case 'shop':
         return renderShop();
       case 'transfers':
