@@ -17,6 +17,7 @@ const Index = () => {
     { id: 'transfers', label: 'Трансферы', icon: 'ArrowLeftRight' },
     { id: 'tickets', label: 'Билеты', icon: 'Ticket' },
     { id: 'fancard', label: 'Карта болельщика', icon: 'CreditCard' },
+    { id: 'partners', label: 'Партнёры', icon: 'Handshake' },
     { id: 'shop', label: 'Магазин', icon: 'ShoppingBag' },
     { id: 'contacts', label: 'Контакты', icon: 'Mail' },
   ];
@@ -74,6 +75,15 @@ const Index = () => {
     { number: 19, name: 'Александр Соболев', position: 'Нападающий', age: 27, nationality: '🇷🇺' },
     { number: 9, name: 'Манфред Угальде', position: 'Нападающий', age: 22, nationality: '🇨🇷' },
     { number: 11, name: 'Шарль Кабор', position: 'Нападающий', age: 28, nationality: '🇧🇫' },
+  ];
+
+  const partners = [
+    { id: 1, name: 'Лукойл', category: 'Генеральный партнёр', logo: '⛽', description: 'Официальный генеральный партнер клуба', link: 'https://www.lukoil.ru' },
+    { id: 2, name: 'Яндекс Еда', category: 'Официальный партнёр', logo: '🍕', description: 'Сервис доставки еды и продуктов', link: 'https://eda.yandex.ru/moscow' },
+    { id: 3, name: 'Газпромбанк', category: 'Официальный партнёр', logo: '🏦', description: 'Официальный банковский партнер', link: 'https://www.gazprombank.ru' },
+    { id: 4, name: 'Nike', category: 'Технический спонсор', logo: '👟', description: 'Официальный технический партнер', link: 'https://www.nike.com' },
+    { id: 5, name: 'МегаФон', category: 'Официальный партнёр', logo: '📱', description: 'Телекоммуникационный партнер', link: 'https://www.megafon.ru' },
+    { id: 6, name: 'Тинькoff', category: 'Официальный партнёр', logo: '💳', description: 'Финансовый партнер клуба', link: 'https://www.tinkoff.ru' },
   ];
 
   const shopItems = [
@@ -739,6 +749,64 @@ const Index = () => {
     </div>
   );
 
+  const renderPartners = () => (
+    <div className="container mx-auto px-4 py-12">
+      <h1 className="text-5xl font-bold mb-4">Партнёры клуба</h1>
+      <p className="text-xl text-muted-foreground mb-8">
+        Официальные партнёры ФК Спартак Москва
+      </p>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {partners.map((partner) => (
+          <Card key={partner.id} className="hover:shadow-lg transition-shadow">
+            <CardHeader className="text-center">
+              <div className="text-6xl mb-4">{partner.logo}</div>
+              <Badge variant="secondary" className="w-fit mx-auto mb-3">
+                {partner.category}
+              </Badge>
+              <CardTitle className="text-2xl">{partner.name}</CardTitle>
+              <CardDescription className="text-base mt-2">
+                {partner.description}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <a 
+                href={partner.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <Button className="w-full gap-2" variant="outline">
+                  Перейти на сайт
+                  <Icon name="ExternalLink" size={16} />
+                </Button>
+              </a>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      <Card className="mt-12 bg-secondary/30">
+        <CardContent className="p-8">
+          <div className="flex items-start gap-4">
+            <Icon name="Handshake" className="text-primary mt-1 flex-shrink-0" size={32} />
+            <div>
+              <h2 className="text-2xl font-bold mb-4">Стать партнёром</h2>
+              <p className="text-lg leading-relaxed mb-4">
+                ФК «Спартак» предлагает широкие возможности для партнёрства и спонсорства. 
+                Мы готовы предложить индивидуальные решения для вашего бизнеса.
+              </p>
+              <Button size="lg" className="gap-2">
+                <Icon name="Mail" size={18} />
+                Связаться с нами
+              </Button>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+
   const renderSection = () => {
     switch (activeSection) {
       case 'home':
@@ -753,6 +821,8 @@ const Index = () => {
         return renderTickets();
       case 'fancard':
         return renderFanCard();
+      case 'partners':
+        return renderPartners();
       case 'shop':
         return renderShop();
       case 'transfers':
